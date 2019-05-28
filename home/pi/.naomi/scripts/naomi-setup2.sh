@@ -151,6 +151,10 @@ function network_setup() {
     fi
 
     return $should_reboot
+    echo
+    echo
+    echo
+    echo
 }
 
 function setup_wizard() {
@@ -160,6 +164,7 @@ function setup_wizard() {
     echo "SETUP WIZARD"
     echo "This process will first walk you through setting up your device,"
     echo "installing Naomi, and default plugins."
+    echo
     echo
     echo
     echo
@@ -220,6 +225,10 @@ function setup_wizard() {
             ;;
         esac
     done
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -256,6 +265,10 @@ function setup_wizard() {
     then
         echo "pi ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/010_pi-nopasswd
     fi
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo -e "Raspbian by default has a user \e[1;33m'pi' \e[1;36mwith a password \e[1;33m'raspberry',\e[1;36m"
@@ -297,6 +310,10 @@ function setup_wizard() {
            ;;
         esac
     done
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -326,7 +343,7 @@ function setup_wizard() {
     echo
     echo -e "\e[1;32mDownloading 'Naomi'...\e[0m"
     cd ~
-    git clone https://github.com/NaomiProject/Naomi.git
+    git clone https://github.com/NaomiProject/Naomi.git .
     cd Naomi
     git checkout naomi-dev
     git pull
@@ -410,6 +427,10 @@ function setup_wizard() {
     cd ~/.naomi/scripts/
     sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
     cd ~
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -482,6 +503,10 @@ function setup_wizard() {
 
         esac
     done
+    echo
+    echo
+    echo
+    echo
 
     lvl=7
     echo -e "\e[1;36m"
@@ -518,6 +543,10 @@ function setup_wizard() {
             ;;
       esac
     done
+    echo
+    echo
+    echo
+    echo
     echo "amixer set PCM "$lvl"9%" >> ~/.naomi/scripts/audio-setup.sh
 
     echo -e "\e[1;36m"
@@ -637,6 +666,10 @@ function setup_wizard() {
             break
         fi
     done
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -672,6 +705,10 @@ function setup_wizard() {
             ;;
         esac
     done
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -734,6 +771,10 @@ function setup_wizard() {
             ;;
         esac
     done
+    echo
+    echo
+    echo
+    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -809,6 +850,10 @@ function setup_wizard() {
             ;;
         esac
     done
+    echo
+    echo
+    echo
+    echo
  
     # Compiling Translations
     echo
@@ -817,6 +862,10 @@ function setup_wizard() {
     chmod +x compile_translations.sh
     ./compile_translations.sh
     chmod a+x Naomi
+    echo
+    echo
+    echo
+    echo
 
     if [ ! $skip_last_prompt ]; then
         echo -e "\e[1;36m"
@@ -843,6 +892,7 @@ function setup_wizard() {
     source ~/Naomi/Population.py
 }
 
+tput reset
 echo -e "\e[33m"
 echo "      ___           ___           ___           ___                  "
 echo "     /\__\         /\  \         /\  \         /\__\          ___    "
