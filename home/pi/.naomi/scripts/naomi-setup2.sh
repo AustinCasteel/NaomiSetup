@@ -196,6 +196,7 @@ function setup_wizard() {
             ;;
          [2])
             echo -e "\e[1;32m$key - Enabling en_US UTF-8"
+            sudo -i
             echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
             locale-gen en_US.UTF-8
             echo "LANG=en_US.UTF-8" > /etc/default/locale
@@ -204,6 +205,7 @@ function setup_wizard() {
             ;;
          [3])
             echo -e "\e[1;32m$key - Enabling fr_FR UTF-8"
+            sudo -i
             echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen
             locale-gen fr_FR.UTF-8
             echo "LANG=fr_FR.UTF-8" > /etc/default/locale
@@ -212,6 +214,7 @@ function setup_wizard() {
             ;;
          [4])
             echo -e "\e[1;32m$key - Enabling de_DE UTF-8"
+            sudo -i
             echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen
             locale-gen de_DE.UTF-8
             echo "LANG=de_DE.UTF-8" > /etc/default/locale
