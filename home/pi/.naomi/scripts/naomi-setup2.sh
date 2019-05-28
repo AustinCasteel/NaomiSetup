@@ -36,17 +36,7 @@ LT_CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 OPTION="0"
 
-function setup_wizard() {
-
-    echo -e "\e[1;36m"
-    echo "========================================================================="
-    echo "SETUP WIZARD"
-    echo "This process will first walk you through setting up your device,"
-    echo "installing Naomi, and default plugins."
-    echo
-    echo
-    echo
-
+function network_setup() {
     echo -e "\e[1;36m"
     echo "========================================================================="
     echo "NETWORK SETUP:"
@@ -159,8 +149,26 @@ function setup_wizard() {
         fi
 
     return $should_reboot
+}
 
-    done
+function setup_wizard() {
+
+    echo -e "\e[1;36m"
+    echo "========================================================================="
+    echo "SETUP WIZARD"
+    echo "This process will first walk you through setting up your device,"
+    echo "installing Naomi, and default plugins."
+    echo
+    echo
+    echo
+
+    # Handle internet connection
+    network_setup
+    if [[ $? -eq 1 ]]
+    then
+        echo -e "\e[1;32mRebooting...\e[0m"
+        sudo reboot
+    fi
 
     echo -e "\e[1;36m"
     echo "========================================================================="
