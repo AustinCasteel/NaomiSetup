@@ -14,7 +14,7 @@ CHECK_PROGRAM() {
     echo $?
 }
 
-REPO_PATH="https://raw.githubusercontent.com/austincasteel/NaomiSetup"
+REPO_PATH="https://raw.githubusercontent.com/austincasteel/NaomiSetup/blob/master"
 
 NL="
 " # New Line
@@ -451,6 +451,10 @@ function setup_wizard() {
     echo "python $NAOMI_DIR/Naomi.py \$@" >> Naomi
     echo "deactivate" >> Naomi
 
+    cd ~/.naomi/scripts/
+    sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
+    cd ~
+
     echo -e "\e[1;36m"
     echo "========================================================================="
     echo "HARDWARE SETUP"
@@ -558,8 +562,6 @@ function setup_wizard() {
             ;;
       esac
     done
-    cd ~/.naomi/scripts/
-    sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
     echo "amixer set PCM "$lvl"9%" >> ~/.naomi/scripts/audio-setup.sh
 
     echo -e "\e[1;36m"
