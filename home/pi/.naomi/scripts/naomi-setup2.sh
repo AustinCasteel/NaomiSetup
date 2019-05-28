@@ -139,14 +139,16 @@ function network_setup() {
 
             $reset_wlan0=4
         fi
+    
+    done
 
-        if [[ $should_reboot -eq 255 ]]
-        then
-            # Auto-detected
-            echo
-            echo -e "\e[1;32mNetwork connection detected! Continuing...\e[0m"
-            should_reboot=0
-        fi
+    if [[ $should_reboot -eq 255 ]]
+    then
+        # Auto-detected
+        echo
+        echo -e "\e[1;32mNetwork connection detected! Continuing...\e[0m"
+        should_reboot=0
+    fi
 
     return $should_reboot
 }
