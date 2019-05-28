@@ -324,6 +324,7 @@ function setup_wizard() {
     # Create basic folder structures
     echo
     echo -e "\e[1;32mCreating File Structure...\e[0m"
+    mkdir ~/Naomi/
     mkdir ~/.naomi/
     mkdir ~/.naomi/configs/
     mkdir ~/.naomi/scripts/
@@ -342,8 +343,9 @@ function setup_wizard() {
     sudo apt-get install git -y
     echo
     echo -e "\e[1;32mDownloading 'Naomi'...\e[0m"
+    cd ~
+    git clone https://github.com/NaomiProject/Naomi.git
     cd ~/Naomi
-    git clone https://github.com/NaomiProject/Naomi.git .
     git checkout naomi-dev
     git pull
 
