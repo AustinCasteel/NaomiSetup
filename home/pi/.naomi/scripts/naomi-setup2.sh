@@ -14,7 +14,7 @@ CHECK_PROGRAM() {
     echo $?
 }
 
-REPO_PATH="https://raw.githubusercontent.com/austincasteel/NaomiSetup/blob/master"
+REPO_PATH="https://raw.githubusercontent.com/austincasteel/NaomiSetup/master"
 
 NL="
 " # New Line
