@@ -342,9 +342,8 @@ function setup_wizard() {
     sudo apt-get install git -y
     echo
     echo -e "\e[1;32mDownloading 'Naomi'...\e[0m"
-    cd ~
+    cd ~/Naomi
     git clone https://github.com/NaomiProject/Naomi.git .
-    cd Naomi
     git checkout naomi-dev
     git pull
 
