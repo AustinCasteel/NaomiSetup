@@ -36,60 +36,6 @@ LT_CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 OPTION="0"
 
-
-
-
-echo -e "\e[33m"
-echo "      ___           ___           ___           ___                  "
-echo "     /\__\         /\  \         /\  \         /\__\          ___    "
-echo "    /::|  |       /::\  \       /::\  \       /::|  |        /\  \   "
-echo "   /:|:|  |      /:/\:\  \     /:/\:\  \     /:|:|  |        \:\  \  "
-echo "  /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/|:|__|__      /::\__\ "
-echo " /:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/ |::::\__\  __/:/\/__/ "
-echo " \/__|:|/:/  / \/__\:\/:/  / \:\  \ /:/  / \/__/~~/:/  / /\/:/  /    "
-echo "     |:/:/  /       \::/  /   \:\  /:/  /        /:/  /  \::/__/     "
-echo "     |::/  /        /:/  /     \:\/:/  /        /:/  /    \:\__\     "
-echo "     /:/  /        /:/  /       \::/  /        /:/  /      \/__/     "
-echo "     \/__/         \/__/         \/__/         \/__/                 "
-
-alias naomi-setup-wizard="cd ~ && touch first_run && source ~/naomi/naomi-setup.sh"
-
-if [ ! -f ~/.naomi/configs/profile.yml]
-then
-    echo -e "\e[1;36m"
-    echo "Welcome to Naomi. This process is designed to make getting started with"
-    echo "Naomi quick and easy. Would you like help setting up your system?"
-    echo
-    echo "  Y)es, I'd like the guided setup."
-    echo "  N)ope, just get me a command line and get out of my way!"
-    echo
-    echo -n -e "\e[1;36mChoice [\e[1;35mY\e[1;36m/\e[1;35mN\e[1;36m]: \e[0m"
-    while true; do
-        read -N1 -s key
-        case $key in
-         [Nn])
-            echo $key
-            echo
-            echo -e "\e[1;92mAlright, Good luck & have fun!"
-            echo
-            echo -e "\e[1;35mNOTE: \e[1;36mIf you find the error of your ways or just plainly decide to use"
-            echo -e "       the wizard later, just type \e[1;35m'naomi-setup-wizard'\e[1;36m and reboot.\e[0m"
-            break
-            break
-            ;;
-         [Yy])
-            echo $key
-            echo
-            setup_wizard
-            break
-            ;;
-        esac
-    done
-
-   # Delete to flag setup is complete
-    rm ~/first_run
-fi
-
 function setup_wizard() {
 
     echo -e "\e[1;36m"
@@ -886,3 +832,51 @@ function setup_wizard() {
     # Launch Naomi
     source ~/Naomi/Population.py
 }
+
+echo -e "\e[33m"
+echo "      ___           ___           ___           ___                  "
+echo "     /\__\         /\  \         /\  \         /\__\          ___    "
+echo "    /::|  |       /::\  \       /::\  \       /::|  |        /\  \   "
+echo "   /:|:|  |      /:/\:\  \     /:/\:\  \     /:|:|  |        \:\  \  "
+echo "  /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/|:|__|__      /::\__\ "
+echo " /:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/ |::::\__\  __/:/\/__/ "
+echo " \/__|:|/:/  / \/__\:\/:/  / \:\  \ /:/  / \/__/~~/:/  / /\/:/  /    "
+echo "     |:/:/  /       \::/  /   \:\  /:/  /        /:/  /  \::/__/     "
+echo "     |::/  /        /:/  /     \:\/:/  /        /:/  /    \:\__\     "
+echo "     /:/  /        /:/  /       \::/  /        /:/  /      \/__/     "
+echo "     \/__/         \/__/         \/__/         \/__/                 "
+
+alias naomi-setup-wizard="cd ~ && touch first_run && source ~/naomi/naomi-setup.sh"
+
+if [ ! -f ~/.naomi/configs/profile.yml ]
+then
+    echo -e "\e[1;36m"
+    echo "Welcome to Naomi. This process is designed to make getting started with"
+    echo "Naomi quick and easy. Would you like help setting up your system?"
+    echo
+    echo "  Y)es, I'd like the guided setup."
+    echo "  N)ope, just get me a command line and get out of my way!"
+    echo
+    echo -n -e "\e[1;36mChoice [\e[1;35mY\e[1;36m/\e[1;35mN\e[1;36m]: \e[0m"
+    while true; do
+        read -N1 -s key
+        case $key in
+         [Nn])
+            echo $key
+            echo
+            echo -e "\e[1;92mAlright, Good luck & have fun!"
+            echo
+            echo -e "\e[1;35mNOTE: \e[1;36mIf you find the error of your ways or just plainly decide to use"
+            echo -e "       the wizard later, just type \e[1;35m'naomi-setup-wizard'\e[1;36m and reboot.\e[0m"
+            break
+            break
+            ;;
+         [Yy])
+            echo $key
+            echo
+            setup_wizard
+            break
+            ;;
+        esac
+    done
+fi
