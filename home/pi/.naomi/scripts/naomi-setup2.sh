@@ -201,25 +201,25 @@ function setup_wizard() {
             ;;
          [2])
             echo -e "\e[1;32m$key - Enabling en_US UTF-8"
-            sudo echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+            sudo su -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen'
             locale-gen en_US.UTF-8
-            sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
+            sudo su -c 'echo "LANG=en_US.UTF-8" > /etc/default/locale'
             update-locale en_US.UTF-8
             break
             ;;
          [3])
             echo -e "\e[1;32m$key - Enabling fr_FR UTF-8"
-            sudo echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen
+            sudo su -c 'echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen'
             locale-gen fr_FR.UTF-8
-            sudo echo "LANG=fr_FR.UTF-8" > /etc/default/locale
+            sudo su -c 'echo "LANG=fr_FR.UTF-8" > /etc/default/locale'
             update-locale fr_FR.UTF-8
             break
             ;;
          [4])
             echo -e "\e[1;32m$key - Enabling de_DE UTF-8"
-            sudo echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen
+            sudo su -c 'echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen'
             locale-gen de_DE.UTF-8
-            sudo echo "LANG=de_DE.UTF-8" > /etc/default/locale
+            sudo su -c 'echo "LANG=de_DE.UTF-8" > /etc/default/locale'
             update-locale de_DE.UTF-8
             break
             ;;
