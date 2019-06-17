@@ -202,25 +202,25 @@ function setup_wizard() {
          [2])
             echo -e "\e[1;32m$key - Enabling en_US UTF-8"
             sudo su -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen'
-            locale-gen en_US.UTF-8
+            sudo locale-gen en_US.UTF-8
             sudo su -c 'echo "LANG=en_US.UTF-8" > /etc/default/locale'
-            update-locale en_US.UTF-8
+            sudo update-locale en_US.UTF-8
             break
             ;;
          [3])
             echo -e "\e[1;32m$key - Enabling fr_FR UTF-8"
             sudo su -c 'echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen'
-            locale-gen fr_FR.UTF-8
+            sudo locale-gen fr_FR.UTF-8
             sudo su -c 'echo "LANG=fr_FR.UTF-8" > /etc/default/locale'
-            update-locale fr_FR.UTF-8
+            sudo update-locale fr_FR.UTF-8
             break
             ;;
          [4])
             echo -e "\e[1;32m$key - Enabling de_DE UTF-8"
             sudo su -c 'echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen'
-            locale-gen de_DE.UTF-8
+            sudo locale-gen de_DE.UTF-8
             sudo su -c 'echo "LANG=de_DE.UTF-8" > /etc/default/locale'
-            update-locale de_DE.UTF-8
+            sudo update-locale de_DE.UTF-8
             break
             ;;
         esac
@@ -426,7 +426,7 @@ function setup_wizard() {
     echo "deactivate" >> Naomi
 
     cd ~/.naomi/scripts/
-    sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
+    wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
     cd ~
     echo
     echo
@@ -495,7 +495,7 @@ function setup_wizard() {
 
             # Install asound.conf
             cd ~/.naomi/scripts/
-            sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/AIY-asound.conf
+            wget -N $REPO_PATH/home/pi/.naomi/scripts/AIY-asound.conf
             sudo cp ~/.naomi/scripts/AIY-asound.conf ~/.naomi/configs/asound.conf
 
             echo -e "\e[1;36m[\e[1;34m!\e[1;36m] Reboot is needed!\e[0m"
@@ -591,7 +591,7 @@ function setup_wizard() {
              5)
                 echo -e "\e[1;32m$key - Matrix Voice Hat"
                 cd ~/.naomi/scripts/
-                sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup-matrix.sh
+                wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup-matrix.sh
                 echo -e "\e[1;36mThe setup script for the Matrix Voice Hat will run at the end"
                 echo "of the setup wizard. Press any key to continue..."
                 read -N1 -s anykey
@@ -824,7 +824,7 @@ function setup_wizard() {
             echo -e "Results will be in the \e[1;35m~/.naomi/pocketsphinx-build.log"
             sleep 10
             cd ~/.naomi/scripts/
-            sudo wget -N $REPO_PATH/home/pi/.naomi/scripts/pocketsphinx-setup.sh
+            wget -N $REPO_PATH/home/pi/.naomi/scripts/pocketsphinx-setup.sh
             cd ~
             bash ~/.naomi/scripts/pocketsphinx-setup.sh -y 2>&1 | tee ~/.naomi/pocketsphinx-build.log
             echo
@@ -837,7 +837,7 @@ function setup_wizard() {
          4)
             echo -e "\e[1;32m$key - DeepSpeech"
             echo -e "\e[1;36m"
-            echo "Sorry for the inconveniounce but this needs to be manually installed"
+            echo "Sorry for the inconvenience but this needs to be manually installed"
             echo "via the docs on our website: https://projectnaomi.com"
             sleep 10
             #cd ~
