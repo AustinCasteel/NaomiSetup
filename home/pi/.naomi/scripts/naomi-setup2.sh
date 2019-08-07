@@ -201,10 +201,10 @@ function setup_wizard() {
             ;;
          [2])
             echo -e "\e[1;32m$key - Enabling en_US UTF-8"
-            sudo su -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen'
-            sudo locale-gen en_US.UTF-8
-            sudo su -c 'echo "LANG=en_US.UTF-8" > /etc/default/locale'
-            sudo update-locale en_US.UTF-8
+            locale=en_US.UTF-8
+            layout=us
+            sudo raspi-config nonint do_change_locale $locale
+            sudo raspi-config nonint do_configure_keyboard $layout
             break
             ;;
          [3])
@@ -814,7 +814,6 @@ function setup_wizard() {
             echo "In particular, this page explains how to register and how to retrieve your private key:"
             echo "https://cloud.google.com/speech-to-text/docs/quickstart-protocol"
             sleep 5
-            pip install wit
             break
             ;;
          3)
@@ -836,17 +835,11 @@ function setup_wizard() {
             ;;
          4)
             echo -e "\e[1;32m$key - DeepSpeech"
-            echo -e "\e[1;36m"
-            echo "Sorry for the inconvenience but this needs to be manually installed"
-            echo "via the docs on our website: https://projectnaomi.com"
-            sleep 10
-            #cd ~
-            #sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
-            #wget https://github.com/bazelbuild/bazel/releases/download/0.4.5/bazel-0.4.5-dist.zip
-            #unzip -d bazel-0.4.5-dist bazel-0.4.5-dist.zip
-            #cd bazel-0.4.5-dist
-            #chmod a+w scripts/bootstrap/compile.sh
-            #...
+            cd ~
+            sudo pip3 install DeepSpeech
+            wget https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-models.tar.gz
+            tar xzvf deepspeech-0.4.1-models.tar.gz
+            cd ~
             break
             ;;
         esac
