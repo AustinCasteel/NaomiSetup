@@ -177,58 +177,58 @@ function setup_wizard() {
         sudo reboot
     fi
 
-    echo -e "\e[1;36m"
-    echo "========================================================================="
-    echo "LOCALIZATION SETUP:"
-    echo -e "By default the Raspbian OS has \e[1;33men_GB.UTF-8 \e[1;36mlocale enabled by default."
-    echo "Which is rightfully so since the Raspberry Pi Foundation is located in the UK. But for"
-    echo "any one not living in the UK this presents an issue if configured wrong."
-    echo
-    echo "Select your locale from the list below:"
-    echo
-    echo -e "\e[1;36m"
-    echo "  1) en_GB"
-    echo "  2) en_US"
-    echo "  3) fr_FR"
-    echo "  4) de_DE"
-    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m4\e[1;36m]: \e[0m"
-    while true; do
-        read -N1 -s key
-        case $key in
-         [1])
-            echo -e "\e[1;32m$key - No change"
-            break
-            ;;
-         [2])
-            echo -e "\e[1;32m$key - Enabling en_US UTF-8"
-            locale=en_US.UTF-8
-            layout=us
-            sudo raspi-config nonint do_change_locale $locale
-            sudo raspi-config nonint do_configure_keyboard $layout
-            break
-            ;;
-         [3])
-            echo -e "\e[1;32m$key - Enabling fr_FR UTF-8"
-            sudo su -c 'echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen'
-            sudo locale-gen fr_FR.UTF-8
-            sudo su -c 'echo "LANG=fr_FR.UTF-8" > /etc/default/locale'
-            sudo update-locale fr_FR.UTF-8
-            break
-            ;;
-         [4])
-            echo -e "\e[1;32m$key - Enabling de_DE UTF-8"
-            sudo su -c 'echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen'
-            sudo locale-gen de_DE.UTF-8
-            sudo su -c 'echo "LANG=de_DE.UTF-8" > /etc/default/locale'
-            sudo update-locale de_DE.UTF-8
-            break
-            ;;
-        esac
-    done
-    echo
-    echo
-    echo
-    echo
+#    echo -e "\e[1;36m"
+#    echo "========================================================================="
+#    echo "LOCALIZATION SETUP:"
+#    echo -e "By default the Raspbian OS has \e[1;33men_GB.UTF-8 \e[1;36mlocale enabled by default."
+#    echo "Which is rightfully so since the Raspberry Pi Foundation is located in the UK. But for"
+#    echo "any one not living in the UK this presents an issue if configured wrong."
+#    echo
+#    echo "Select your locale from the list below:"
+#    echo
+#    echo -e "\e[1;36m"
+#    echo "  1) en_GB"
+#    echo "  2) en_US"
+#    echo "  3) fr_FR"
+#    echo "  4) de_DE"
+#    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m4\e[1;36m]: \e[0m"
+#    while true; do
+#        read -N1 -s key
+#        case $key in
+#         [1])
+#            echo -e "\e[1;32m$key - No change"
+#            break
+#            ;;
+#         [2])
+#            echo -e "\e[1;32m$key - Enabling en_US UTF-8"
+#            locale=en_US.UTF-8
+#            layout=us
+#            sudo raspi-config nonint do_change_locale $locale
+#            sudo raspi-config nonint do_configure_keyboard $layout
+#            break
+#            ;;
+#         [3])
+#            echo -e "\e[1;32m$key - Enabling fr_FR UTF-8"
+#            sudo su -c 'echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen'
+#            sudo locale-gen fr_FR.UTF-8
+#            sudo su -c 'echo "LANG=fr_FR.UTF-8" > /etc/default/locale'
+#            sudo update-locale fr_FR.UTF-8
+#            break
+#            ;;
+#         [4])
+#            echo -e "\e[1;32m$key - Enabling de_DE UTF-8"
+#            sudo su -c 'echo "de_DE.UTF-8 UTF-8" > /etc/locale.gen'
+#            sudo locale-gen de_DE.UTF-8
+#            sudo su -c 'echo "LANG=de_DE.UTF-8" > /etc/default/locale'
+#            sudo update-locale de_DE.UTF-8
+#            break
+#            ;;
+#        esac
+#    done
+#    echo
+#    echo
+#    echo
+#    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -602,7 +602,7 @@ function setup_wizard() {
                 ;;
              6)
                 echo -e "\e[1;32m$key - Other"
-                echo -e "\e[1;36mOther microphone _might_ work, but there are no guarantees."
+                echo -e "\e[1;36mOther microphones _might_ work, but there are no guarantees."
                 echo "We'll run the tests, but you are on your own.  If you have"
                 echo "issues, the most likely cause is an incompatible microphone."
                 echo "The PS Eye is cheap -- save yourself hassle and just buy one!"
@@ -678,7 +678,7 @@ function setup_wizard() {
     echo "Naomi is continuously updated.  For most users it is recommended that"
     echo "you run on the 'master' branch which always holds stable builds released"
     echo "every 6 months or so where as the 'dev' branch is always in development."
-    echo "Note: 'dev' comes with automatic updates."
+#    echo "Note: 'dev' comes with automatic updates."
     echo -e "\e[1;36m"
     echo "  1) Use the recommended ('master')"
     echo "  2) I'm a developer or want the cutting edge, put me on 'dev'"
