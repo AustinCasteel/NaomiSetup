@@ -41,6 +41,7 @@ function network_setup() {
     echo "========================================================================="
     echo "NETWORK SETUP:"
     echo
+    sleep 3
 
     # silent check at first
     if ping -q -c 1 -W 1 1.1.1.1 >/dev/null 2>&1 ; then
@@ -165,7 +166,7 @@ function setup_wizard() {
     echo "This process will first walk you through setting up your device,"
     echo "installing Naomi, and default plugins."
     echo
-    echo
+    sleep 3
     echo
     echo
 
@@ -234,6 +235,8 @@ function setup_wizard() {
     echo "========================================================================="
     echo "SECURITY SETUP:"
     echo "Let's examine a few security settings."
+    echo
+    sleep 3
     echo
     echo "By default, Raspbian is configured to not require a password to perform"
     echo "actions as root (e.g. 'sudo ...').  This allows any application on the"
@@ -319,6 +322,8 @@ function setup_wizard() {
     echo "========================================================================="
     echo "ENVIRONMENT SETUP:"
     echo "Now setting up the file stuctures & requirements"
+    echo
+    sleep 3
     echo
 
     # Create basic folder structures
