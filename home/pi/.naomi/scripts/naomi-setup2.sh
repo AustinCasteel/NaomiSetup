@@ -522,16 +522,16 @@ function setup_wizard() {
     echo "  R)eboot (needed if you just installed Google Voice Hat or plugged in a USB speaker)"
     echo "  D)one!"
     while true; do
-        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mD\e[1;36m/\e[1;35mR\e[1;36m]: \e[0m${lvl}          \b\b\b\b\b\b\b\b\b\b"
+        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mD\e[1;36m/\e[1;35mR\e[1;36m]: \e[0m          \b\b\b\b\b\b\b\b\b\b"
         read -N1 -s key
         case $key in
          [1-9])
             lvl=$key
             # Set volume between 19% and 99%.
             amixer set Master "${lvl}9%" > /dev/null
-            echo -e -n "\b$lvl PLAYING"
-            aplay ~/Naomi/naomi/data/audio/beep_hi.wav
-            aplay ~/Naomi/naomi/data/audio/beep_lo.wav
+            echo -e -n "\e[1;32m \b$lvl PLAYING"
+            aplay '~/Naomi/naomi/data/audio/beep_hi.wav'
+            aplay '~/Naomi/naomi/data/audio/beep_lo.wav'
             ;;
          [Rr])
             echo -e "\e[1;32mRebooting..."
@@ -539,7 +539,7 @@ function setup_wizard() {
             ;;
          [Tt])
             amixer set Master '${lvl}9%' > /dev/null
-            echo -e -n "\b$lvl PLAYING"
+            echo -e -n "\e[1;32m \b$lvl PLAYING"
             aplay ~/Naomi/naomi/data/audio/beep_hi.wav
             aplay ~/Naomi/naomi/data/audio/beep_lo.wav
             ;;
@@ -693,7 +693,7 @@ function setup_wizard() {
         case $key in
          1)
             echo -e "\e[1;32m$key - Easy Peasy!"
-            echo '{"use_branch":"master", "auto_update": false}' > ~/.naomi/configs/.naobian_options.json
+            echo '{"use_branch":"master", "auto_update": false}' > ~/.naomi/configs/.naomi_options.json
             cd ~/Naomi
             git checkout master
             git pull
@@ -702,7 +702,7 @@ function setup_wizard() {
             ;;
          2)
             echo -e "\e[1;32m$key - You know what you are doing!"
-            echo '{"use_branch":"dev", "auto_update": true}' > ~/.naomi/configs/.naobian_options.json
+            echo '{"use_branch":"dev", "auto_update": true}' > ~/.naomi/configs/.naomi_options.json
             cd ~/Naomi
             git checkout dev
             git pull
