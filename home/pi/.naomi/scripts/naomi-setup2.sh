@@ -238,40 +238,40 @@ function setup_wizard() {
     echo
     sleep 3
     echo
-    echo "By default, Raspbian is configured to not require a password to perform"
-    echo "actions as root (e.g. 'sudo ...').  This allows any application on the"
-    echo "pi to have full access to the system.  This can make some development"
-    echo "tasks easy, but is less secure.  Would you like to remain with this default"
-    echo "setup or would you lke to enable standard 'sudo' password behavior?"
-    echo -e "\e[1;36m"
-    echo "  1) Stick with normal Raspian configuration, no password for 'sudo'"
-    echo "  2) Require a password for 'sudo' actions."
-    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m2\e[1;36m]: \e[0m"
-    require_sudo=0
-    while true; do
-        read -N1 -s key
-        case $key in
-         [1])
-            echo -e "\e[1;32m$key - No password"
-            require_sudo=0
-            break
-            ;;
-         [2])
-            echo -e "\e[1;32m$key - Enabling password protection for 'sudo'"
-            require_sudo=1
-            break
-            ;;
-        esac
-    done
-
-    if [ $require_sudo -eq 1 ]
-    then
-        echo "pi ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/010_pi-nopasswd
-    fi
-    echo
-    echo
-    echo
-    echo
+#    echo "By default, Raspbian is configured to not require a password to perform"
+#    echo "actions as root (e.g. 'sudo ...').  This allows any application on the"
+#    echo "pi to have full access to the system.  This can make some development"
+#    echo "tasks easy, but is less secure.  Would you like to remain with this default"
+#    echo "setup or would you lke to enable standard 'sudo' password behavior?"
+#    echo -e "\e[1;36m"
+#    echo "  1) Stick with normal Raspian configuration, no password for 'sudo'"
+#    echo "  2) Require a password for 'sudo' actions."
+#    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m2\e[1;36m]: \e[0m"
+#    require_sudo=0
+#    while true; do
+#        read -N1 -s key
+#        case $key in
+#         [1])
+#            echo -e "\e[1;32m$key - No password"
+#            require_sudo=0
+#            break
+#            ;;
+#         [2])
+#            echo -e "\e[1;32m$key - Enabling password protection for 'sudo'"
+#            require_sudo=1
+#            break
+#            ;;
+#        esac
+#    done
+#
+#    if [ $require_sudo -eq 1 ]
+#    then
+#        echo "pi ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/010_pi-nopasswd
+#    fi
+#    echo
+#    echo
+#    echo
+#    echo
 
     echo -e "\e[1;36m"
     echo -e "Raspbian by default has a user \e[1;33m'pi' \e[1;36mwith a password \e[1;33m'raspberry',\e[1;36m"
@@ -530,8 +530,7 @@ function setup_wizard() {
             # Set volume between 19% and 99%.
             amixer set Master "${lvl}9%" > /dev/null
             echo -e -n "\e[1;32m \b$lvl PLAYING"
-            aplay '~/Naomi/naomi/data/audio/beep_hi.wav'
-            aplay '~/Naomi/naomi/data/audio/beep_lo.wav'
+            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
             ;;
          [Rr])
             echo -e "\e[1;32mRebooting..."
@@ -540,8 +539,7 @@ function setup_wizard() {
          [Tt])
             amixer set Master '${lvl}9%' > /dev/null
             echo -e -n "\e[1;32m \b$lvl PLAYING"
-            aplay ~/Naomi/naomi/data/audio/beep_hi.wav
-            aplay ~/Naomi/naomi/data/audio/beep_lo.wav
+            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
             ;;
          [Dd])
             echo -e "\e[1;32mSaving..."
