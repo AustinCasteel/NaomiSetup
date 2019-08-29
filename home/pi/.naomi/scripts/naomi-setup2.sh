@@ -522,7 +522,7 @@ function setup_wizard() {
     echo "  R)eboot (needed if you just installed Google Voice Hat or plugged in a USB speaker)"
     echo "  D)one!"
     while true; do
-        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mD\e[1;36m/\e[1;35mR\e[1;36m]: \e[0m          \b\b\b\b\b\b\b\b\b\b"
+        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mR\e[1;36m/\e[1;35mD\e[1;36m]: \e[0m          \b\b\b\b\b\b\b\b\b\b"
         read -N1 -s key
         case $key in
          [1-9])
@@ -702,7 +702,7 @@ function setup_wizard() {
             echo -e "\e[1;32m$key - You know what you are doing!"
             echo '{"use_branch":"dev", "auto_update": true}' > ~/.naomi/configs/.naomi_options.json
             cd ~/Naomi
-            git checkout dev
+            git checkout naomi-dev
             git pull
             cd ..
             break
@@ -724,7 +724,7 @@ function setup_wizard() {
     echo "========================================================================="
     echo "TTS SETUP:"
     echo "TTS, stands for Text To Speech, and is software that transforms text into speech,"
-    echo "which is how Naomi can speak to you. You will need to pick one of the Below"
+    echo "which is how Naomi can speak to you. You will need to pick one of the options below"
     echo 
     echo "Note: Some engines do not require you to do anything other than input information during the profile setup."
     echo
@@ -886,7 +886,7 @@ function setup_wizard() {
     fi
 
     # Launch Naomi
-    source ~/Naomi/Population.py
+    source ~/Naomi/Populate.py
 }
 
 tput reset
