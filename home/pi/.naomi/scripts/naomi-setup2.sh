@@ -885,8 +885,9 @@ function setup_wizard() {
         ./audio-setup-matrix.sh
     fi
 
-    # Launch Naomi
-    source ~/Naomi/Populate.py
+    # Launch Naomi Population
+    cd ~/Naomi
+    ./Naomi --repopulate
 }
 
 tput reset
@@ -919,7 +920,7 @@ then
         read -N1 -s key
         case $key in
          [Nn])
-            echo $key
+            echo -e "\e[1;32m$key - Nope"
             echo
             echo -e "\e[1;92mAlright, Good luck & have fun!"
             echo
@@ -929,7 +930,7 @@ then
             break
             ;;
          [Yy])
-            echo $key
+            echo -e "\e[1;32m$key - Yes"
             echo
             setup_wizard
             break
