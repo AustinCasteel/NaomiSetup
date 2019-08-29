@@ -1,4 +1,4 @@
-The script works almost perfectly with only a couple bugs, but multiple parts keep getting turned down or removed for one reason or another too the point where the altered script just becomes exactly like the old version so there is no reason to continue development off it.
+The script works almost perfectly with only a couple bugs. Due note, these scripts are not 100% compatible with Naomi at the time of writing. Once the scripting is finished up and passes tests then Naomi will be updated with compatibility.
 # Use at your own risk...
 
 ## Install Naomi script
