@@ -840,8 +840,8 @@ function setup_wizard() {
             echo -e "\e[1;32m$key - DeepSpeech"
             cd ~
             sudo pip3 install DeepSpeech
-            wget https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-models.tar.gz
-            tar xzvf deepspeech-0.4.1-models.tar.gz
+            wget https://github.com/mozilla/DeepSpeech/releases/download/v0.5.1/deepspeech-0.5.1-models.tar.gz
+            tar xzvf deepspeech-0.5.1-models.tar.gz
             cd ~
             break
             ;;
