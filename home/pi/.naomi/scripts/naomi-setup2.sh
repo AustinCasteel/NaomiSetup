@@ -678,20 +678,33 @@ function setup_wizard() {
     echo -e "\e[1;36m"
     echo "========================================================================="
     echo "NAOMI SETUP:"
-    echo "Naomi is continuously updated.  For most users it is recommended that"
-    echo "you run on the 'master' branch which always holds stable builds released"
-    echo "every 6 months or so where as the 'dev' branch is always in development."
-#    echo "Note: 'dev' comes with automatic updates."
+    echo "Naomi is continuously updated. There are three options to choose from:"
+    echo
+    echo "'Stable' versions are thoroughly tested official releases of Naomi. Use"
+    echo "the stable version for your production environment if you don't need the"
+    echo "latest enhancements and prefer a robust system"
+    echo
+    echo "'Milestone' versions are intermediary releases of the next Naomi version,"
+    echo "released about once a month, and they include the new recently added"
+    echo "features and bugfixes. They are a good compromise between the current"
+    echo "stable version and the bleeding-edge and potentially unstable nightly version."
+    echo
+    echo "'Nightly' versions are at most 1 or 2 days old and include the latest code."
+    echo "Use nightly for testing out very recent changes, but be aware some nightly"
+    echo "versions might be unstable. Use in production at your own risk!"
+    echo
+    echo "Note: 'Nightly' comes with automatic updates by default!"
     echo -e "\e[1;36m"
-    echo "  1) Use the recommended ('master')"
-    echo "  2) I'm a developer or want the cutting edge, put me on 'dev'"
-    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m2\e[1;36m]: \e[0m"
+    echo "  1) Use the recommended ('Stable')"
+    echo "  2) Monthly releases sound good to me ('Milestone')"
+    echo "  3) I'm a developer or want the cutting edge, put me on 'Nightly'"
+    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m3\e[1;36m]: \e[0m"
     while true; do
         read -N1 -s key
         case $key in
          1)
             echo -e "\e[1;32m$key - Easy Peasy!"
-            echo '{"use_branch":"master", "auto_update": false}' > ~/.naomi/configs/.naomi_options.json
+            echo '{"use_release":"stable", "auto_update": false}' > ~/.naomi/configs/.naomi_options.json
             cd ~/Naomi
             git checkout master
             git pull
@@ -699,8 +712,17 @@ function setup_wizard() {
             break
             ;;
          2)
+            echo -e "\e[1;32m$key - Good Choice!"
+            echo '{"use_release":"milestone", "auto_update": false}' > ~/.naomi/configs/.naomi_options.json
+            cd ~/Naomi
+            git checkout naomi-dev
+            git pull
+            cd ..
+            break
+            ;;
+         3)
             echo -e "\e[1;32m$key - You know what you are doing!"
-            echo '{"use_branch":"dev", "auto_update": true}' > ~/.naomi/configs/.naomi_options.json
+            echo '{"use_release":"nightly", "auto_update": true}' > ~/.naomi/configs/.naomi_options.json
             cd ~/Naomi
             git checkout naomi-dev
             git pull
