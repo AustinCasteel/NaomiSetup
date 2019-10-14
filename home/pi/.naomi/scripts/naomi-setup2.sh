@@ -893,7 +893,7 @@ function setup_wizard() {
         echo "That's all, installation is complete!  Now we'll hand you over to the profile"
         echo "population process and after that Naomi will start."
         echo
-        echo -e "To rerun this setup, type \e[1;35m'naomi-setup-wizard' \e[1;36m in the"
+        echo -e "To rerun this setup, type \e[1;35m'naomi-setup-wizard'\e[1;36m in the"
         echo "terminal and reboot."
         echo
         echo -e "\e[1;36mPress any key to launch Population..."
