@@ -429,6 +429,52 @@ function setup_wizard() {
     echo "workon Naomi" >> Naomi
     echo "python $NAOMI_DIR/Naomi.py \$@" >> Naomi
     echo "deactivate" >> Naomi
+    echo
+    echo
+    echo
+    echo
+
+    echo -e "\e[1;36m"
+    echo "We will set up Naomi to run in a python virtualenvwrapper environment"
+    echo "to prevent Naomi's dependencies from interfering with other python"
+    echo "scripts running on your system."
+    echo " "
+    echo "If you want, we can add the call to start virtualenvwrapper directly"
+    echo -e "to the end of your \e[1;35m~/.bashrc\e[1;36m file, so if you want to use the same"
+    echo "python that Naomi does for debugging or installing additional"
+    echo -e "dependencies, all you have to type is \e[1;35m'workon Naomi'\e[1;36m"
+    echo " "
+    echo "Otherwise, you will need to enter:"
+    echo -e "\e[1;35m'VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv'\e[1;36m"
+    echo -e "\e[1;35m'source ~/.local/bin/virtualenvwrapper.sh'\e[1;36m"
+    echo -e "before you will be able activate the Naomi environment with \e[1;35m'workon Naomi'\e[1;36m"
+    echo " "
+    echo "All of this will be incorporated into the Naomi script, so to simply"
+    echo "launch Naomi, all you have to type is \e[1;35m'./Naomi'\e[1;36m regardless of your choice here."
+    echo " "
+    echo -e "\e[1;36m[\e[1;33m?\e[1;36m] Would you like to start VirtualEnvWrapper automatically? \e[0m"
+    echo -e "\e[1;36m"
+    echo "  Y)es, start virtualenvwrapper whenever I start a shell"
+    echo "  N)o, don't start virtualenvwrapper for me"
+    echo -n -e "\e[1;36mChoice [\e[1;35mY\e[1;36m/\e[1;35mN\e[1;36m]: \e[0m"
+    while true; do
+        read -N1 -s key
+        case $key in
+        [Yy])
+            echo -e "\e[1;32m$key - Automating Naomi Startup"
+            echo 'export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv source ~/.local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+            break
+            ;;
+        [Nn])
+           echo -e "\e[1;32m$key - Manual Start"
+           break
+           ;;
+        esac
+    done
+    echo
+    echo
+    echo
+    echo
 
     cd ~/.naomi/scripts/
     wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
@@ -881,6 +927,7 @@ function setup_wizard() {
     chmod +x compile_translations.sh
     ./compile_translations.sh
     chmod a+x Naomi
+    cd ~
     echo
     echo
     echo
@@ -893,10 +940,9 @@ function setup_wizard() {
         echo "That's all, installation is complete!  Now we'll hand you over to the profile"
         echo "population process and after that Naomi will start."
         echo
-        echo -e "To rerun this setup, type \e[1;35m'naomi-setup-wizard'\e[1;36m in the"
-        echo "terminal and reboot."
+        echo "In the future, run $NAOMI_DIR/Naomi to start Naomi"
         echo
-        echo -e "\e[1;36mPress any key to launch Population..."
+        echo -e "\e[1;36mPress any key to start populating your profile..."
         read -N1 -s anykey
     fi
 
@@ -946,8 +992,8 @@ then
             echo
             echo -e "\e[1;92mAlright, Good luck & have fun!"
             echo
-            echo -e "\e[1;35mNOTE: \e[1;36mIf you find the error of your ways or just plainly decide to use"
-            echo -e "       the wizard later, just type \e[1;35m'naomi-setup-wizard'\e[1;36m and reboot.\e[0m"
+#            echo -e "\e[1;35mNOTE: \e[1;36mIf you find the error of your ways or just plainly decide to use"
+#            echo -e "       the wizard later, just type \e[1;35m'naomi-setup-wizard'\e[1;36m and reboot.\e[0m"
             break
             break
             ;;
