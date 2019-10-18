@@ -273,50 +273,50 @@ function setup_wizard() {
 #    echo
 #    echo
 
-    echo -e "\e[1;36m"
-    echo -e "Raspbian by default has a user \e[1;33m'pi' \e[1;36mwith a password \e[1;33m'raspberry',\e[1;36m"
-    echo "As a network connected device, having a unique password significantly"
-    echo "enhances your security and thwarts the majority of hacking attempts."
-    echo "We recommend setting a unique password for any device, especially one"
-    echo "that is exposed directly to the internet."
-    echo " "
-    echo -e "\e[1;36m[\e[1;33m?\e[1;36m] Would you like to enter a new password? \e[0m"
-    echo -e "\e[1;36m"
-    echo "  Y)es, prompt me for a new password"
-    echo "  N)o, stick with the default password of 'raspberry'"
-    echo -n -e "\e[1;36mChoice [\e[1;35mY\e[1;36m/\e[1;35mN\e[1;36m]: \e[0m"
-    while true; do
-        read -N1 -s key
-        case $key in
-        [Yy])
-            echo -e "\e[1;32m$key - changing password"
-            user_pwd=0
-            user_confirm=1
-            echo -n -e "\e[1;36mEnter your new password (characters WILL NOT appear): \e[0m"
-            read -s user_pwd
-            echo
-            echo -n -e "\e[1;36mEnter your new password again: \e[0m"
-            read -s user_confirm
-            echo
-            if [ "$user_pwd" = "$user_confirm" ]
-            then
-                # Change 'pi' user password
-                echo "pi:$user_pwd" | sudo chpasswd
-                break
-            else
-                echo -e "\e[1;31mPasswords didn't match."
-            fi
-            ;;
-        [Nn])
-           echo -e "\e[1;32m$key - Using password 'raspberry'"
-           break
-           ;;
-        esac
-    done
-    echo
-    echo
-    echo
-    echo
+#    echo -e "\e[1;36m"
+#    echo -e "Raspbian by default has a user \e[1;33m'pi' \e[1;36mwith a password \e[1;33m'raspberry',\e[1;36m"
+#    echo "As a network connected device, having a unique password significantly"
+#    echo "enhances your security and thwarts the majority of hacking attempts."
+#    echo "We recommend setting a unique password for any device, especially one"
+#    echo "that is exposed directly to the internet."
+#    echo " "
+#    echo -e "\e[1;36m[\e[1;33m?\e[1;36m] Would you like to enter a new password? \e[0m"
+#    echo -e "\e[1;36m"
+#    echo "  Y)es, prompt me for a new password"
+#    echo "  N)o, stick with the default password of 'raspberry'"
+#    echo -n -e "\e[1;36mChoice [\e[1;35mY\e[1;36m/\e[1;35mN\e[1;36m]: \e[0m"
+#    while true; do
+#        read -N1 -s key
+#        case $key in
+#        [Yy])
+#            echo -e "\e[1;32m$key - changing password"
+#            user_pwd=0
+#            user_confirm=1
+#            echo -n -e "\e[1;36mEnter your new password (characters WILL NOT appear): \e[0m"
+#            read -s user_pwd
+#            echo
+#            echo -n -e "\e[1;36mEnter your new password again: \e[0m"
+#            read -s user_confirm
+#            echo
+#            if [ "$user_pwd" = "$user_confirm" ]
+#            then
+#                # Change 'pi' user password
+#                echo "pi:$user_pwd" | sudo chpasswd
+#                break
+#            else
+#                echo -e "\e[1;31mPasswords didn't match."
+#            fi
+#            ;;
+#        [Nn])
+#           echo -e "\e[1;32m$key - Using password 'raspberry'"
+#           break
+#           ;;
+#        esac
+#    done
+#    echo
+#    echo
+#    echo
+#    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
@@ -462,7 +462,7 @@ function setup_wizard() {
         case $key in
         [Yy])
             echo -e "\e[1;32m$key - Automating Naomi Startup"
-            echo 'export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv source ~/.local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+            echo 'VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv source ~/.local/bin/virtualenvwrapper.sh' >> ~/.bashrc
             break
             ;;
         [Nn])
@@ -476,250 +476,250 @@ function setup_wizard() {
     echo
     echo
 
-    cd ~/.naomi/scripts/
-    wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
-    cd ~
-    echo
-    echo
-    echo
-    echo
+#    cd ~/.naomi/scripts/
+#    wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup.sh
+#    cd ~
+#    echo
+#    echo
+#    echo
+#    echo
+#
+#    echo -e "\e[1;36m"
+#    echo "========================================================================="
+#    echo "HARDWARE SETUP"
+#    echo "How do you want Naomi to output audio:"
+#    echo "  1) Speakers via 3.5mm output (aka the 'audio jack')"
+#    echo "  2) HDMI audio (e.g. a TV or monitor with built-in speakers)"
+#    echo "  3) USB audio (e.g. a USB soundcard or USB mic/speaker combo)"
+#    echo "  4) Google AIY Voice HAT and microphone board (Voice Kit v1)"
+#    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m4\e[1;36m]: \e[0m"
+#    while true; do
+#        read -N1 -s key
+#        case $key in
+#         1)
+#            echo -e "\e[1;32m$key - Analog audio"
+#            # audio out the analog speaker/headphone jack
+#            sudo amixer cset numid=3 "1" > /dev/null
+#            echo 'sudo amixer cset numid=3 "1" > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
+#            break
+#            ;;
+#         2)
+#            echo -e "\e[1;32m$key - HDMI audio"
+#            # audio out the HDMI port (e.g. TV speakers)
+#            sudo amixer cset numid=3 "2" > /dev/null
+#            echo 'sudo amixer cset numid=3 "2"  > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
+#            break
+#            ;;
+#         3)
+#            echo -e "\e[1;32m$key - USB audio"
+#            # audio out to the USB soundcard
+#            sudo amixer cset numid=3 "0" > /dev/null
+#            echo 'sudo amixer cset numid=3 "0"  > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
+#            break
+#            ;;
+#         4)
+#            echo -e "\e[1;32m$key - Google AIY Voice HAT and microphone board (Voice Kit v1)"
+#            # Get AIY drivers
+#            echo "deb https://dl.google.com/aiyprojects/deb stable main" | sudo tee /etc/apt/sources.list.d/aiyprojects.list
+#            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
-    echo -e "\e[1;36m"
-    echo "========================================================================="
-    echo "HARDWARE SETUP"
-    echo "How do you want Naomi to output audio:"
-    echo "  1) Speakers via 3.5mm output (aka the 'audio jack')"
-    echo "  2) HDMI audio (e.g. a TV or monitor with built-in speakers)"
-    echo "  3) USB audio (e.g. a USB soundcard or USB mic/speaker combo)"
-    echo "  4) Google AIY Voice HAT and microphone board (Voice Kit v1)"
-    echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m4\e[1;36m]: \e[0m"
-    while true; do
-        read -N1 -s key
-        case $key in
-         1)
-            echo -e "\e[1;32m$key - Analog audio"
-            # audio out the analog speaker/headphone jack
-            sudo amixer cset numid=3 "1" > /dev/null
-            echo 'sudo amixer cset numid=3 "1" > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
-            break
-            ;;
-         2)
-            echo -e "\e[1;32m$key - HDMI audio"
-            # audio out the HDMI port (e.g. TV speakers)
-            sudo amixer cset numid=3 "2" > /dev/null
-            echo 'sudo amixer cset numid=3 "2"  > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
-            break
-            ;;
-         3)
-            echo -e "\e[1;32m$key - USB audio"
-            # audio out to the USB soundcard
-            sudo amixer cset numid=3 "0" > /dev/null
-            echo 'sudo amixer cset numid=3 "0"  > /dev/null' >> ~/.naomi/scripts/audio-setup.sh
-            break
-            ;;
-         4)
-            echo -e "\e[1;32m$key - Google AIY Voice HAT and microphone board (Voice Kit v1)"
-            # Get AIY drivers
-            echo "deb https://dl.google.com/aiyprojects/deb stable main" | sudo tee /etc/apt/sources.list.d/aiyprojects.list
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#            sudo apt-get update
+#            sudo mkdir /usr/lib/systemd/system
 
-            sudo apt-get update
-            sudo mkdir /usr/lib/systemd/system
+#            sudo apt-get install aiy-dkms aiy-io-mcu-firmware aiy-vision-firmware dkms raspberrypi-kernel-headers
+#            sudo apt-get install aiy-dkms aiy-voicebonnet-soundcard-dkms aiy-voicebonnet-routes
+#            sudo apt-get install leds-ktd202x-dkms
 
-            sudo apt-get install aiy-dkms aiy-io-mcu-firmware aiy-vision-firmware dkms raspberrypi-kernel-headers
-            sudo apt-get install aiy-dkms aiy-voicebonnet-soundcard-dkms aiy-voicebonnet-routes
-            sudo apt-get install leds-ktd202x-dkms
+#            # make soundcard recognizable
+#            sudo sed -i \
+#                -e "s/^dtparam=audio=on/#\0/" \
+#                -e "s/^#\(dtparam=i2s=on\)/\1/" \
+#                /boot/config.txt
+#            grep -q -F "dtoverlay=i2s-mmap" /boot/config.txt || sudo echo "dtoverlay=i2s-mmap" | sudo tee -a /boot/config.txt
+#            grep -q -F "dtoverlay=googlevoicehat-soundcard" /boot/config.txt || sudo echo "dtoverlay=googlevoicehat-soundcard" | sudo tee -a /boot/config.txt
 
-            # make soundcard recognizable
-            sudo sed -i \
-                -e "s/^dtparam=audio=on/#\0/" \
-                -e "s/^#\(dtparam=i2s=on\)/\1/" \
-                /boot/config.txt
-            grep -q -F "dtoverlay=i2s-mmap" /boot/config.txt || sudo echo "dtoverlay=i2s-mmap" | sudo tee -a /boot/config.txt
-            grep -q -F "dtoverlay=googlevoicehat-soundcard" /boot/config.txt || sudo echo "dtoverlay=googlevoicehat-soundcard" | sudo tee -a /boot/config.txt
+#            # make changes to profile.yml
+#            sudo sed -i \
+#                -e "s/aplay -Dhw:0,0 %1/aplay %1/" \
+#                -e "s/mpg123 -a hw:0,0 %1/mpg123 %1/" \
+#                ~/.naomi/configs/profile.yml
 
-            # make changes to profile.yml
-            sudo sed -i \
-                -e "s/aplay -Dhw:0,0 %1/aplay %1/" \
-                -e "s/mpg123 -a hw:0,0 %1/mpg123 %1/" \
-                ~/.naomi/configs/profile.yml
+#            # Install asound.conf
+#            cd ~/.naomi/scripts/
+#            wget -N $REPO_PATH/home/pi/.naomi/scripts/AIY-asound.conf
+#            sudo cp ~/.naomi/scripts/AIY-asound.conf ~/.naomi/configs/asound.conf
 
-            # Install asound.conf
-            cd ~/.naomi/scripts/
-            wget -N $REPO_PATH/home/pi/.naomi/scripts/AIY-asound.conf
-            sudo cp ~/.naomi/scripts/AIY-asound.conf ~/.naomi/configs/asound.conf
+#            echo -e "\e[1;36m[\e[1;34m!\e[1;36m] Reboot is needed!\e[0m"
+#            break
+#            ;;
+#
+#        esac
+#    done
+#    echo
+#    echo
+#    echo
+#    echo
+#
+#    lvl=7
+#    echo -e "\e[1;36m"
+#    echo "Let's test and adjust the volume:"
+#    echo "  1-9) Set volume level (1-quietest, 9=loudest)"
+#    echo "  T)est"
+#    echo "  R)eboot (needed if you just installed Google Voice Hat or plugged in a USB speaker)"
+#    echo "  D)one!"
+#    while true; do
+#        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mR\e[1;36m/\e[1;35mD\e[1;36m]: \e[0m          \b\b\b\b\b\b\b\b\b\b"
+#        read -N1 -s key
+#        case $key in
+#         [1-9])
+#            lvl=$key
+#            # Set volume between 19% and 99%.
+#            amixer set Master "${lvl}9%" > /dev/null
+#            echo -e -n "\e[1;32m \b$lvl PLAYING"
+#            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
+#            ;;
+#         [Rr])
+#            echo -e "\e[1;32mRebooting..."
+#            sudo reboot
+#            ;;
+#         [Tt])
+#            amixer set Master '${lvl}9%' > /dev/null
+#            echo -e -n "\e[1;32m \b$lvl PLAYING"
+#            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
+#            ;;
+#         [Dd])
+#            echo -e "\e[1;32mSaving..."
+#            break
+#            ;;
+#      esac
+#    done
+#    echo
+#    echo
+#    echo
+#    echo
+#    echo "amixer set PCM "$lvl"9%" >> ~/.naomi/scripts/audio-setup.sh
 
-            echo -e "\e[1;36m[\e[1;34m!\e[1;36m] Reboot is needed!\e[0m"
-            break
-            ;;
+#    echo -e "\e[1;36m"
+#    echo "The final step is Microphone configuration:"
+#    echo "As a voice assistant, Naomi needs to access a microphone to operate."
 
-        esac
-    done
-    echo
-    echo
-    echo
-    echo
-
-    lvl=7
-    echo -e "\e[1;36m"
-    echo "Let's test and adjust the volume:"
-    echo "  1-9) Set volume level (1-quietest, 9=loudest)"
-    echo "  T)est"
-    echo "  R)eboot (needed if you just installed Google Voice Hat or plugged in a USB speaker)"
-    echo "  D)one!"
-    while true; do
-        echo -n -e "\r\e[1;36mLevel [\e[1;35m1\e[1;36m-\e[1;35m9\e[1;36m/\e[1;35mT\e[1;36m/\e[1;35mR\e[1;36m/\e[1;35mD\e[1;36m]: \e[0m          \b\b\b\b\b\b\b\b\b\b"
-        read -N1 -s key
-        case $key in
-         [1-9])
-            lvl=$key
-            # Set volume between 19% and 99%.
-            amixer set Master "${lvl}9%" > /dev/null
-            echo -e -n "\e[1;32m \b$lvl PLAYING"
-            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
-            ;;
-         [Rr])
-            echo -e "\e[1;32mRebooting..."
-            sudo reboot
-            ;;
-         [Tt])
-            amixer set Master '${lvl}9%' > /dev/null
-            echo -e -n "\e[1;32m \b$lvl PLAYING"
-            aplay ~/Naomi/naomi/data/audio/beep_hi.wav ~/Naomi/naomi/data/audio/beep_lo.wav
-            ;;
-         [Dd])
-            echo -e "\e[1;32mSaving..."
-            break
-            ;;
-      esac
-    done
-    echo
-    echo
-    echo
-    echo
-    echo "amixer set PCM "$lvl"9%" >> ~/.naomi/scripts/audio-setup.sh
-
-    echo -e "\e[1;36m"
-    echo "The final step is Microphone configuration:"
-    echo "As a voice assistant, Naomi needs to access a microphone to operate."
-
-    while true; do
-        echo -e "\e[1;36m"
-        echo "Please ensure your microphone is connected and select from the following"
-        echo "list of microphones:"
-        echo "  1) Akiro Kinobo (USB)"
-        echo "  2) PlayStation Eye (USB)"
-        echo "  3) Blue Snowball ICE (USB)"
-        echo "  4) Google AIY Voice HAT and microphone board (Voice Kit v1)"
-        echo "  5) Matrix Voice HAT."
-        echo "  6) Other (might work... might not -- good luck!)"
-        echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m6\e[1;36m]: \e[0m"
-        echo
-        while true; do
-            read -N1 -s key
-            case $key in
-             1)
-                echo -e "\e[1;32m$key - Akiro Kinobo"
-                # nothing to do, this is the default
-                break
-                ;;
-             2)
-                echo -e "\e[1;32m$key - PS Eye"
-                # nothing to do, this is the default
-                break
-                ;;
-             3)
-                echo -e "\e[1;32m$key - Blue Snowball"
-                # nothing to do, this is the default
-                break
-                ;;
-             4)
-                echo -e "\e[1;32m$key - Google AIY Voice Hat"
-                break
-                ;;
-             5)
-                echo -e "\e[1;32m$key - Matrix Voice Hat"
-                cd ~/.naomi/scripts/
-                wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup-matrix.sh
-                echo -e "\e[1;36mThe setup script for the Matrix Voice Hat will run at the end"
-                echo "of the setup wizard. Press any key to continue..."
-                read -N1 -s anykey
-                touch setup_matrix
-                skip_mic_test=true
-                skip_last_prompt=true
-                break
-                ;;
-             6)
-                echo -e "\e[1;32m$key - Other"
-                echo -e "\e[1;36mOther microphones _might_ work, but there are no guarantees."
-                echo "We'll run the tests, but you are on your own.  If you have"
-                echo "issues, the most likely cause is an incompatible microphone."
-                echo "The PS Eye is cheap -- save yourself hassle and just buy one!"
-                break
-                ;;
-            esac
-        done
-
-        if [ ! $skip_mic_test ]; then
-            echo -e "\e[1;36m"
-            echo "Testing microphone..."
-            echo "In a few seconds you will see a prompt to start talking."
-            echo "Say something like 'testing 1 2 3 4 5 6 7 8 9 10'.  After"
-            echo "10 seconds, the sound heard through the microphone will be played back."
-            echo
-            echo "Press any key to begin the test..."
-            sleep 1
-            read -N1 -s key
-
-            echo
-            echo -e "\e[1;32mAudio Recoding starts in 3 seconds...\e[0m"
-            sleep 3
-            arecord  -r16000 -fS16_LE -c1 -d10 audiotest.wav
-            echo
-            echo -e "\e[1;32mRecoded Playback starts in 3 seconds...\e[0m"
-            sleep 3
-            aplay audiotest.wav
-
-            retry_mic=0
-            echo -e "\e[1;36m"
-            echo -e "\e[1;36m[\e[1;33m?\e[1;36m] Did you hear yourself in the audio? \e[0m"
-            echo -e "\e[1;36m"
-            echo "  1) Yes!"
-            echo "  2) No, let's repeat the test."
-            echo "  3) No :(   Let's move on and I'll mess with the microphone later."
-            echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m3\e[1;36m]: \e[0m"
-            while true; do
-                read -N1 -s key
-                case $key in
-                [1])
-                    echo -e "\e[1;32m$key - Yes, good to go"
-                    break
-                    ;;
-                [2])
-                    echo -e "\e[1;32m$key - No, trying again"
-                    echo
-                    retry_mic=1
-                    break
-                    ;;
-                [3])
-                    echo -e "\e[1;32m$key - No, I give up and will use command line only (for now)!"
-                    break
-                    ;;
-                esac
-            done
-
-            if [ $retry_mic -eq 0 ] ; then
-                break
-            fi
-
-        else
-            break
-        fi
-    done
-    echo
-    echo
-    echo
-    echo
+#    while true; do
+#        echo -e "\e[1;36m"
+#        echo "Please ensure your microphone is connected and select from the following"
+#        echo "list of microphones:"
+#        echo "  1) Akiro Kinobo (USB)"
+#        echo "  2) PlayStation Eye (USB)"
+#        echo "  3) Blue Snowball ICE (USB)"
+#        echo "  4) Google AIY Voice HAT and microphone board (Voice Kit v1)"
+#        echo "  5) Matrix Voice HAT."
+#        echo "  6) Other (might work... might not -- good luck!)"
+#        echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m6\e[1;36m]: \e[0m"
+#        echo
+#        while true; do
+#            read -N1 -s key
+#            case $key in
+#             1)
+#                echo -e "\e[1;32m$key - Akiro Kinobo"
+#                # nothing to do, this is the default
+#                break
+#                ;;
+#             2)
+#                echo -e "\e[1;32m$key - PS Eye"
+#                # nothing to do, this is the default
+#                break
+#                ;;
+#             3)
+#                echo -e "\e[1;32m$key - Blue Snowball"
+#                # nothing to do, this is the default
+#                break
+#                ;;
+#             4)
+#                echo -e "\e[1;32m$key - Google AIY Voice Hat"
+#                break
+#                ;;
+#             5)
+#                echo -e "\e[1;32m$key - Matrix Voice Hat"
+#                cd ~/.naomi/scripts/
+#                wget -N $REPO_PATH/home/pi/.naomi/scripts/audio-setup-matrix.sh
+#                echo -e "\e[1;36mThe setup script for the Matrix Voice Hat will run at the end"
+#                echo "of the setup wizard. Press any key to continue..."
+#                read -N1 -s anykey
+#                touch setup_matrix
+#                skip_mic_test=true
+#                skip_last_prompt=true
+#                break
+#                ;;
+#             6)
+#                echo -e "\e[1;32m$key - Other"
+#                echo -e "\e[1;36mOther microphones _might_ work, but there are no guarantees."
+#                echo "We'll run the tests, but you are on your own.  If you have"
+#                echo "issues, the most likely cause is an incompatible microphone."
+#                echo "The PS Eye is cheap -- save yourself hassle and just buy one!"
+#                break
+#                ;;
+#            esac
+#        done
+#
+#        if [ ! $skip_mic_test ]; then
+#            echo -e "\e[1;36m"
+#            echo "Testing microphone..."
+#            echo "In a few seconds you will see a prompt to start talking."
+#            echo "Say something like 'testing 1 2 3 4 5 6 7 8 9 10'.  After"
+#            echo "10 seconds, the sound heard through the microphone will be played back."
+#            echo
+#            echo "Press any key to begin the test..."
+#            sleep 1
+#            read -N1 -s key
+#
+#            echo
+#            echo -e "\e[1;32mAudio Recoding starts in 3 seconds...\e[0m"
+#            sleep 3
+#            arecord  -r16000 -fS16_LE -c1 -d10 audiotest.wav
+#            echo
+#            echo -e "\e[1;32mRecoded Playback starts in 3 seconds...\e[0m"
+#            sleep 3
+#            aplay audiotest.wav
+#
+#            retry_mic=0
+#            echo -e "\e[1;36m"
+#            echo -e "\e[1;36m[\e[1;33m?\e[1;36m] Did you hear yourself in the audio? \e[0m"
+#            echo -e "\e[1;36m"
+#            echo "  1) Yes!"
+#            echo "  2) No, let's repeat the test."
+#            echo "  3) No :(   Let's move on and I'll mess with the microphone later."
+#            echo -n -e "\e[1;36mChoice [\e[1;35m1\e[1;36m-\e[1;35m3\e[1;36m]: \e[0m"
+#            while true; do
+#                read -N1 -s key
+#                case $key in
+#                [1])
+#                    echo -e "\e[1;32m$key - Yes, good to go"
+#                    break
+#                    ;;
+#                [2])
+#                    echo -e "\e[1;32m$key - No, trying again"
+#                    echo
+#                    retry_mic=1
+#                    break
+#                    ;;
+#                [3])
+#                    echo -e "\e[1;32m$key - No, I give up and will use command line only (for now)!"
+#                    break
+#                    ;;
+#                esac
+#            done
+#
+#            if [ $retry_mic -eq 0 ] ; then
+#                break
+#            fi
+#
+#        else
+#            break
+#        fi
+#    done
+#    echo
+#    echo
+#    echo
+#    echo
 
     echo -e "\e[1;36m"
     echo "========================================================================="
